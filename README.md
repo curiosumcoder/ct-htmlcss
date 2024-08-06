@@ -2,8 +2,8 @@
 Material relacionado con el curso de SOFT-643 Desarrollo Web HTML-CSS Intermedio, impartido para UCenfotec Agosot 2024.
 
 ### Requerimientos de software
-* Microsoft Visual Studio Code\
-https://code.visualstudio.com/\
+* Microsoft Visual Studio Code \
+https://code.visualstudio.com/ \
 Instalar o actualizar a la última versión.\
     * Agregar la extensión **ESLint**.
     * Agregar la extensión **Prettier - Code formatter**.
