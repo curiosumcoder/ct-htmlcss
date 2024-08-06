@@ -4,7 +4,7 @@ Material relacionado con el curso de SOFT-643 Desarrollo Web HTML-CSS Intermedio
 ### Requerimientos de software
 * Microsoft Visual Studio Code \
 https://code.visualstudio.com/ \
-Instalar o actualizar a la última versión.\
+Instalar o actualizar a la última versión. \
     * Agregar la extensión **ESLint**.
     * Agregar la extensión **Prettier - Code formatter**.
     * Agregar la extensión **Material Icon Theme**.
