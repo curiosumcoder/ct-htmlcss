@@ -1,0 +1,30 @@
+table {
+    border: 1px solid black;
+    padding: 0.5em;
+    width: 50em;
+    border-collapse: collapse;
+}
+
+table > tbody td {
+    border-bottom: 1px solid blue;
+    border-right: 1px dotted gray;
+    margin: 10px 5px;
+}
+
+table thead {
+    border-bottom: 1px solid gray;
+}
+
+table thead th {
+    border-right: 1px solid blue;
+    padding: 10px 1em;
+}
+
+tbody > tr:nth-child(odd) 
+{
+    color: brown;
+}
+
+table {
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+}
