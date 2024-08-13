@@ -11,7 +11,26 @@
   </head>
   <body>
     <div class="container">
-      <form>
+      <h3>New Product</h3>
+      <form id="fCreate">
+        <label for="iName" class="form-label">Name</label>
+        <input
+          id="iName"
+          type="text"
+          placeholder="Product Name"
+          class="form-control"
+        />
+        <label for="iPrice" class="form-label">Price</label>
+        <input
+          id="iPrice"
+          type="number"
+          placeholder="Product Price"
+          class="form-control"
+        />
+        <button type="submit" class="btn btn-primary">Create</button>
+      </form>
+      <hr />
+      <form id="fFilter">
         <label for="iFilter" class="form-label">Filter</label>
         <input
           id="iFilter"
@@ -31,6 +50,7 @@
             <th>Id</th>
             <th>Name</th>
             <th>Price</th>
+            <th></th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -45,7 +65,25 @@
       $(async () => {
         console.log("DOM is ready!");
 
-        $("form").submit((event) => {
+        $("form#fCreate").submit((event) => {
+          event.preventDefault();
+          const name = $("#iName").val();
+          const price = $("#iPrice").val();
+
+          $.post(
+            "http://localhost:3000/products",
+            {
+              productName: name,
+              unitPrice: price,
+            },
+            (data) => {
+              console.log(data);
+              alert("Product created!");
+            }
+          );
+        });
+
+        $("form#fFilter").submit((event) => {
           event.preventDefault();
           const filter = $("#iFilter").val();
 
@@ -63,12 +101,31 @@
 
                 $.each(data, (index, product) => {
                   const row = `<tr>
-                <td>${product.id}</td>
-                <td>${product.productName}</td>
-                <td>${product.unitPrice}</td>
-              </tr>`;
+                        <td>${product.id}</td>
+                        <td>${product.productName}</td>
+                        <td>${product.unitPrice}</td>
+                        <td><button class="btn btn-danger">Delete</button></td>
+                    </tr>`;
 
                   $("#results tbody").append(row);
+                });
+
+                $("#results button").click(function (event) {
+                  const c = confirm("Are you sure you want to delete?");
+                  if (c) {
+                    console.log("Deleting ...");
+                    const id = $(this).parents("tr").find("td").eq(0).text();
+                    console.log(id);
+
+                    $.ajax({
+                      url: `http://localhost:3000/products/${id}`,
+                      type: "DELETE",
+                      success: function (result) {
+                        console.log(result);
+                        $(this).parents("tr").remove();
+                      },
+                    });
+                  }
                 });
               }
             );

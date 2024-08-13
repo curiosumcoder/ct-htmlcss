@@ -262,18 +262,6 @@
       "discontinued": false
     },
     {
-      "id": 11,
-      "productName": "Queso Cabrale",
-      "supplierID": 5,
-      "categoryID": 4,
-      "quantityPerUnit": "1 kg pkg.",
-      "unitPrice": 21,
-      "unitsInStock": 22,
-      "unitsOnOrder": 30,
-      "reorderLevel": 30,
-      "discontinued": false
-    },
-    {
       "id": 12,
       "productName": "Queso Manchego La Pastora",
       "supplierID": 5,
