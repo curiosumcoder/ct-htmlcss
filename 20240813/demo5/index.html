@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="style/bootstrap-5.3.3-dist/css/bootstrap.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <form>
+        <label for="iFilter" class="form-label">Filter</label>
+        <input
+          id="iFilter"
+          type="search"
+          placeholder="Type here"
+          class="form-control"
+        />
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+
+      <table id="results" class="table table-striped">
+        <caption>
+          Products
+        </caption>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <script src="scripts/lib/jquery-3.7.1.js"></script>
+    <script>
+      // $(document).ready(function () {
+      //     console.log('Hello World')
+      // })
+      $(async () => {
+        console.log("DOM is ready!");
+
+        $("form").submit((event) => {
+          event.preventDefault();
+          const filter = $("#iFilter").val();
+
+          if (filter) {
+            $("#results tbody").empty();
+            console.log(`Form submitted: ${filter}`);
+
+            $.getJSON(
+              `http://localhost:3000/products?productName_like=${filter}`,
+              (data) => {
+                //console.log(data);
+                //data.forEach(p => { console.log(p);});
+
+                //for (const p of data) { console.log(p);}
+
+                $.each(data, (index, product) => {
+                  const row = `<tr>
+                <td>${product.id}</td>
+                <td>${product.productName}</td>
+                <td>${product.unitPrice}</td>
+              </tr>`;
+
+                  $("#results tbody").append(row);
+                });
+              }
+            );
+          }
+        });
+
+        // GET http://localhost:3000/products?productName_like=queso
+        const filter = "queso";
+
+        // Promises, async/await, Fetch API
+        // let data = await fetch(`http://localhost:3000/products?productName_like=${filter}`)
+        // let json = await data.json()
+        //console.log(json)
+
+        // data = await fetch(`http://localhost:3000/categories`)
+        // json = await data.json()
+        //console.log(json)
+      });
+    </script>
+  </body>
+</html>
