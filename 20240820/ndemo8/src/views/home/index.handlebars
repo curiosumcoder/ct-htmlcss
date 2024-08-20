@@ -23,12 +23,20 @@
         </tr>
     </thead>
     <tbody>
+        {{#each data}}
         <tr>
-            <td></td>
-            <td></td>
+            <td>{{productName}}</td>
+            <td>{{unitPrice}}</td>
             <td></td>
         </tr>
+        {{/each}}
     </tbody>
   </table>
 
 </div>
+
+<script>
+    $(()=> {        
+        $('table').DataTable();
+    })
+</script>
