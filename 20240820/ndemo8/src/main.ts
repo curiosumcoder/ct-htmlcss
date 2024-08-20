@@ -11,7 +11,7 @@ app.set('views', './src/views');
 
 app.get('/', (request: Request, response: Response) => {
     //response.status(200).send('Hello World');
-    response.render('home/index')
+    response.render('home/index', {titulo: 'Welcome Page'});
 })
 
 app.listen(PORT, () => {console.log('Server running at PORT: ', PORT);})
